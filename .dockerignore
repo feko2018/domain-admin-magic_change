@@ -1,0 +1,8 @@
+.github
+logs
+temp
+database
+doc
+http
+image
+.pytest_cache

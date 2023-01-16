@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+"""
+路由配置
+"""
+from domain_admin.api import cert_api, ip_api, notify_api
+from domain_admin.api import domain_api
+from domain_admin.api import group_api
+from domain_admin.api import auth_api
+from domain_admin.api import system_api
+from domain_admin.api import user_api
+from domain_admin.api import log_scheduler_api
+
+routes = {
+    # 域名信息
+    "/api/getCertInformation": cert_api.get_cert_information,
+
+    # 登录注册
+    "/api/login": auth_api.login,
+    "/api/register": auth_api.register,
+
+    # 域名
+    "/api/addDomain": domain_api.add_domain,
+    "/api/updateDomainById": domain_api.update_domain_by_id,
+    "/api/deleteDomainById": domain_api.delete_domain_by_id,
+    "/api/getDomainList": domain_api.get_domain_list,
+    "/api/getDomainById": domain_api.get_domain_by_id,
+    "/api/updateDomainCertInfoById": domain_api.update_domain_cert_info_by_id,
+    "/api/updateAllDomainCertInfo": domain_api.update_all_domain_cert_info,
+    "/api/updateAllDomainCertInfoOfUser": domain_api.update_all_domain_cert_info_of_user,
+    "/api/deleteFailDomain": domain_api.delete_fail_domain,##新添加删除失效域名api
+    "/api/deleteAllDomain": domain_api.delete_all_domain,##新添加删除所有域名api
+    "/api/sendDomainInfoListEmail": domain_api.send_domain_info_list_email,
+    "/api/checkDomainCert": domain_api.check_domain_cert,
+    "/api/importDomainFromFile": domain_api.import_domain_from_file,
+    "/api/getAllDomainListOfUser": domain_api.get_all_domain_list_of_user,
+
+    # 分组管理
+    "/api/addGroup": group_api.add_group,
+    "/api/updateGroupById": group_api.update_group_by_id,
+    "/api/deleteGroupById": group_api.delete_group_by_id,
+    "/api/getGroupList": group_api.get_group_list,
+    "/api/getGroupById": group_api.get_group_by_id,
+
+    # 用户
+    '/api/getUserInfo': user_api.get_user_info,
+    '/api/updateUserInfo': user_api.update_user_info,
+    '/api/updateUserPassword': user_api.update_user_password,
+
+    # 调度日志
+    '/api/getLogSchedulerList': log_scheduler_api.get_log_scheduler_list,
+
+    # 系统管理 (管理员权限)
+    '/api/getAllSystemConfig': system_api.get_all_system_config,
+    '/api/updateSystemConfig': system_api.update_system_config,
+    '/api/getSystemVersion': system_api.get_system_version,
+
+    # 用户管理 (管理员权限)
+    '/api/getUserList': user_api.get_user_list,
+    '/api/addUser': user_api.add_user,
+    '/api/updateUserStatus': user_api.update_user_status,
+    '/api/deleteUser': user_api.delete_user,
+
+
+    # 获取ip信息
+    '/api/getIpInfo': ip_api.get_ip_info,
+
+    # 通知方式
+    '/api/getNotifyOfUser': notify_api.get_notify_of_user,
+    '/api/updateNotifyOfUser': notify_api.update_notify_of_user,
+    '/api/testWebhookNotifyOfUser': notify_api.test_webhook_notify_of_user,
+
+}
